@@ -1,87 +1,48 @@
-function createCountdown(id, targetDate){
+function createCountdown(id, finalDate){
 
       function updateCountdown(){
 
           const now = new Date().getTime();
+              const distance = finalDate - now;
 
-              const distance = targetDate - now;
+                  if(distance <= 0){
+                        document.getElementById(id).innerHTML = "🎉 Objetivo alcançado!";
+                              return;
+                                  }
 
-                  const timer = document.getElementById(id);
+                                      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                              const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                                  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                      if(distance <= 0){
+                                                      document.getElementById(id).innerHTML = `
+                                                            ${days} dias <br>
+                                                                  ${hours} horas <br>
+                                                                        ${minutes} minutos <br>
+                                                                              ${seconds} segundos
+                                                                                  `;
+                                                                                    }
 
-                            timer.innerHTML = `
-                                    <div class="finished">
-                                              ✅ Objetivo concluído!
-                                                      </div>
-                                                            `;
+                                                                                      updateCountdown();
+                                                                                        setInterval(updateCountdown, 1000);
+                                                                                        }
 
-                                                                  return;
-                                                                      }
+                                                                                        createCountdown(
+                                                                                          "timer1",
+                                                                                            new Date("December 30, 2026 00:00:00").getTime()
+                                                                                            );
 
-                                                                          const days = Math.floor(
-                                                                                distance / (1000 * 60 * 60 * 24)
-                                                                                    );
+                                                                                            createCountdown(
+                                                                                              "timer2",
+                                                                                                new Date("December 30, 2029 00:00:00").getTime()
+                                                                                                );
 
-                                                                                        const hours = Math.floor(
-                                                                                              (distance % (1000 * 60 * 60 * 24)) /
-                                                                                                    (1000 * 60 * 60)
+                                                                                                createCountdown(
+                                                                                                  "timer3",
+                                                                                                    new Date("December 30, 2030 00:00:00").getTime()
+                                                                                                    );
+
+                                                                                                    createCountdown(
+                                                                                                      "timer4",
+                                                                                                        new Date("December 30, 2031 00:00:00").getTime()
                                                                                                         );
-
-                                                                                                            const minutes = Math.floor(
-                                                                                                                  (distance % (1000 * 60 * 60)) /
-                                                                                                                        (1000 * 60)
-                                                                                                                            );
-
-                                                                                                                                const seconds = Math.floor(
-                                                                                                                                      (distance % (1000 * 60)) /
-                                                                                                                                            1000
-                                                                                                                                                );
-
-                                                                                                                                                    timer.innerHTML = `
-                                                                                                                                                          <div class="time-box">
-                                                                                                                                                                  <span class="number">${days}</span>
-                                                                                                                                                                          <span class="label">Dias</span>
-                                                                                                                                                                                </div>
-
-                                                                                                                                                                                      <div class="time-box">
-                                                                                                                                                                                              <span class="number">${hours}</span>
-                                                                                                                                                                                                      <span class="label">Horas</span>
-                                                                                                                                                                                                            </div>
-
-                                                                                                                                                                                                                  <div class="time-box">
-                                                                                                                                                                                                                          <span class="number">${minutes}</span>
-                                                                                                                                                                                                                                  <span class="label">Min</span>
-                                                                                                                                                                                                                                        </div>
-
-                                                                                                                                                                                                                                              <div class="time-box">
-                                                                                                                                                                                                                                                      <span class="number">${seconds}</span>
-                                                                                                                                                                                                                                                              <span class="label">Seg</span>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                        `;
-                                                                                                                                                                                                                                                                          }
-
-                                                                                                                                                                                                                                                                            updateCountdown();
-
-                                                                                                                                                                                                                                                                              setInterval(updateCountdown, 1000);
-                                                                                                                                                                                                                                                                              }
-
-                                                                                                                                                                                                                                                                              createCountdown(
-                                                                                                                                                                                                                                                                                "timer1",
-                                                                                                                                                                                                                                                                                  new Date("December 30, 2026 00:00:00").getTime()
-                                                                                                                                                                                                                                                                                  );
-
-                                                                                                                                                                                                                                                                                  createCountdown(
-                                                                                                                                                                                                                                                                                    "timer2",
-                                                                                                                                                                                                                                                                                      new Date("December 30, 2029 00:00:00").getTime()
-                                                                                                                                                                                                                                                                                      );
-
-                                                                                                                                                                                                                                                                                      createCountdown(
-                                                                                                                                                                                                                                                                                        "timer3",
-                                                                                                                                                                                                                                                                                          new Date("December 30, 2030 00:00:00").getTime()
-                                                                                                                                                                                                                                                                                          );
-
-                                                                                                                                                                                                                                                                                          createCountdown(
-                                                                                                                                                                                                                                                                                            "timer4",
-                                                                                                                                                                                                                                                                                              new Date("December 30, 2031 00:00:00").getTime()
-                                                                                                                                                                                                                                                                                              );
